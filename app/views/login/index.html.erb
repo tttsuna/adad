@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <%= form_tag("/login",method: :post,class: "login") do %>
+    <p class="title">Log in</p>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+    <input type="text" placeholder="Username" autofocus name="name"/>
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" name="password" />
+    <i class="fa fa-key"></i>
+    <a href="#">パスワードを忘れた場合</a>
+    <button>
+      <i class="spinner"></i>
+      <span class="state">Log in</span>
+    </button>
+  <% end %>>
+</div>
