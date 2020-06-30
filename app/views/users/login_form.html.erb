@@ -1,0 +1,42 @@
+<!--<script type="text/javascript" src="/app/javascript/channels/login.js"></script>-->
+<!--<link href="/app/assets/fontawesome-free-5.13.0-web/css/fontawesome.min.css" rel="stylesheet">-->
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--<link href="/login_form.css" rel="stylesheet">-->
+<script>
+    function myfunc(e) {
+        var working = true;
+        // e.preventDefault();
+        if (working) return;
+        working = true;
+        var $this = $(this),
+            $state = $this.find('button > .state');
+        $this.addClass('loading');
+        $state.html('Authenticating');
+        setTimeout(function() {
+            $this.addClass('ok');
+            $state.html('Welcome back!');
+            setTimeout(function() {
+                $state.html('Log in');
+                $this.removeClass('ok loading');
+                working = false;
+            }, 4000);
+        }, 3000);
+    }
+</script>
+<div class="wrapper">
+    <%= form_tag('/login',method: :post,class: 'login') do %>
+      <p class="title">Log in</p>
+      <input name="username" type="text" placeholder="Username" value="<%= @email %>" autofocus/>
+      <i class="fa fa-user"></i>
+      <input name="password" type="password" placeholder="Password" value="<%= @password %>"/>
+      <i class="fa fa-key"></i>
+      <a href="#">Forgot your password?</a>
+      <button onclick="myfunc('.login')">
+        <i class="spinner"></i>
+        <span class="state">Log in</span>
+      </button>
+    <% end %>
+  <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer>
+  </p>
+</div>
