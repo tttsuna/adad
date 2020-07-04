@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       # 変数sessionに、ログインに成功したユーザーのidを代入してください
       # session[:user_id] = @user.id
       # flash[:notice] = "ログインしました"
-      # redirect_to("https://www.google.com")
+      redirect_to("https://www.google.com")
 
     else
       render("login_form")
